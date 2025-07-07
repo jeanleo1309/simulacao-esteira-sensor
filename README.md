@@ -16,7 +16,9 @@ Demonstrar de forma simples a lógica de automação industrial, simulando um pr
 
 ## ▶️ Como executar
 
-1. Instale o Python no seu computador (se ainda não tiver):  
+### 🖥️ Versão 1 – Terminal (simples)
+
+1. Instale o Python no seu computador:  
    👉 [https://www.python.org/downloads/](https://www.python.org/downloads/)
 
 2. Baixe ou clone este repositório:

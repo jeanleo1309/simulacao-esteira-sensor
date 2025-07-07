@@ -19,5 +19,5 @@ Demonstrar de forma simples a lógica de automação industrial, simulando um pr
 
 2. Baixe ou clone este repositório:
    ```bash
-   git clone https://github.com/**SEU_USUARIO**/simulacao-esteira-sensor.git
+   git clone https://github.com/jeanleo1309/simulacao-esteira-sensor.git
 

@@ -1,4 +1,4 @@
-# simulacao-esteira-sensor# 🚚 Simulação de Esteira com Sensor de Contagem
+# 🚚 Simulação de Esteira com Sensor de Contagem
 
 Este projeto simula uma esteira transportadora com um sensor de contagem usando Python. A ideia é representar o funcionamento básico de uma esteira com objetos passando por um sensor, contando cada item detectado.
 
@@ -14,9 +14,10 @@ Demonstrar de forma simples a lógica de automação industrial, simulando um pr
 
 ## ▶️ Como executar
 
-1. Instale o Python no seu computador (se ainda não tiver):
+1. Instale o Python no seu computador (se ainda não tiver):  
    👉 [https://www.python.org/downloads/](https://www.python.org/downloads/)
 
 2. Baixe ou clone este repositório:
    ```bash
-   git clone https://github.com/SEU_USUARIO/simulacao-esteira-sensor.git
+   git clone https://github.com/**SEU_USUARIO**/simulacao-esteira-sensor.git
+

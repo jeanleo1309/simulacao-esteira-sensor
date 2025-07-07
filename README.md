@@ -1,4 +1,6 @@
 # 🚚 Simulação de Esteira com Sensor de Contagem
+![Python](https://img.shields.io/badge/Python-3.11-blue)
+![License](https://img.shields.io/badge/License-MIT-green)
 
 Este projeto simula uma esteira transportadora com um sensor de contagem usando Python. A ideia é representar o funcionamento básico de uma esteira com objetos passando por um sensor, contando cada item detectado.
 

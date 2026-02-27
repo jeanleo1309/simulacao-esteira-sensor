@@ -1,55 +1,60 @@
 import tkinter as tk
 import random
-import threading
-import time
 
-contador = 0
-executando = False
+class SimuladorEsteira:
+    def __init__(self, root):
+        self.root = root
+        self.root.title("Simulação de Esteira com Sensor")
+        self.root.geometry("350x220")
 
-def iniciar_esteira():
-    global executando
-    if not executando:
-        executando = True
-        status_label.config(text="🟢 Esteira Ligada")
-        threading.Thread(target=simular_esteira).start()
+        self.contador = 0
+        self.executando = False
+        self.probabilidade_objeto = 0.6  # 60% de chance de objeto
 
-def parar_esteira():
-    global executando
-    executando = False
-    status_label.config(text="🔴 Esteira Parada")
+        # Labels
+        self.contador_label = tk.Label(root, text="Objetos contados: 0", font=("Arial", 14))
+        self.contador_label.pack(pady=10)
 
-def resetar_contador():
-    global contador
-    contador = 0
-    contador_label.config(text=f"Objetos contados: {contador}")
+        self.status_label = tk.Label(root, text="🔴 Esteira Parada", font=("Arial", 12))
+        self.status_label.pack()
 
-def simular_esteira():
-    global contador
-    while executando:
-        objeto = random.choice([True, False])
-        if objeto:
-            contador += 1
-            contador_label.config(text=f"Objetos contados: {contador}")
-        time.sleep(1)
+        # Botões
+        tk.Button(root, text="Iniciar Esteira", command=self.iniciar_esteira,
+                  bg="green", fg="white").pack(pady=5)
 
-# Interface
-janela = tk.Tk()
-janela.title("Simulação de Esteira com Sensor")
-janela.geometry("350x200")
+        tk.Button(root, text="Parar Esteira", command=self.parar_esteira,
+                  bg="red", fg="white").pack(pady=5)
 
-contador_label = tk.Label(janela, text="Objetos contados: 0", font=("Arial", 14))
-contador_label.pack(pady=10)
+        tk.Button(root, text="Resetar Contador", command=self.resetar_contador).pack(pady=5)
 
-status_label = tk.Label(janela, text="🔴 Esteira Parada", font=("Arial", 12))
-status_label.pack()
+    def iniciar_esteira(self):
+        if not self.executando:
+            self.executando = True
+            self.status_label.config(text="🟢 Esteira Ligada")
+            self.simular_esteira()
 
-btn_iniciar = tk.Button(janela, text="Iniciar Esteira", command=iniciar_esteira, bg="green", fg="white")
-btn_iniciar.pack(pady=5)
+    def parar_esteira(self):
+        self.executando = False
+        self.status_label.config(text="🔴 Esteira Parada")
 
-btn_parar = tk.Button(janela, text="Parar Esteira", command=parar_esteira, bg="red", fg="white")
-btn_parar.pack(pady=5)
+    def resetar_contador(self):
+        self.contador = 0
+        self.contador_label.config(text="Objetos contados: 0")
 
-btn_resetar = tk.Button(janela, text="Resetar Contador", command=resetar_contador)
-btn_resetar.pack(pady=5)
+    def simular_esteira(self):
+        if self.executando:
+            objeto = random.random() < self.probabilidade_objeto
+            if objeto:
+                self.contador += 1
+                self.contador_label.config(
+                    text=f"Objetos contados: {self.contador}"
+                )
 
-janela.mainloop()
+            # Executa novamente após 1000ms (1 segundo)
+            self.root.after(1000, self.simular_esteira)
+
+
+if __name__ == "__main__":
+    root = tk.Tk()
+    app = SimuladorEsteira(root)
+    root.mainloop()
